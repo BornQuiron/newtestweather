@@ -3,7 +3,7 @@ import Navbar from './components/Navbar';
 import Main from './components/Main';
 import Map from './components/Map';
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Screen from './components/Screen';
 
 
@@ -26,6 +26,48 @@ function App() {
   const [ location, setLocation ] = useState('');
 
 
+
+  useEffect(() => {
+
+        const showPosition = (position) => {
+            const coords = `${position.coords.latitude}/${position.coords.longitude}`;
+            
+            console.log(coords)
+
+            /* console.log(position.coords.latitude); */
+        }
+    
+        const showError = (error) => {
+
+
+            switch(error.code) {
+                case error.PERMISSION_DENIED:
+                  alert("User denied the request for Geolocation.")
+                  break;
+                case error.POSITION_UNAVAILABLE:
+                  alert("Location information is unavailable.")
+                  break;
+                case error.TIMEOUT:
+                  alert("The request to get user location timed out.")
+                  break;
+                case error.UNKNOWN_ERROR:
+                  alert("An unknown error occurred.")
+                  break;
+            }
+        }
+
+
+
+        if(navigator.geolocation){
+            /* console.log(navigator.geolocation.getCurrentPosition()) */
+            navigator.geolocation.getCurrentPosition(showPosition, showError,{ enableHighAccuracy: true });
+        } else {
+            alert('Geolocation is not supported by this browser');
+        }
+
+    
+
+  }, []);
 
 
   return (
