@@ -26,6 +26,8 @@ function App() {
   const [ location, setLocation ] = useState('');
 
 
+  const [ coordz, setCoordz ] = useState('');
+
 
   useEffect(() => {
 
@@ -33,6 +35,7 @@ function App() {
             const coords = `${position.coords.latitude}/${position.coords.longitude}`;
             
             console.log(coords)
+            setCoordz(coords)
 
             /* console.log(position.coords.latitude); */
         }
@@ -73,7 +76,10 @@ function App() {
   return (
       <div className="App">
         {welcome ? (
-          <Screen welcome={welcome} setWelcome={setWelcome}/>
+          <>
+            <Screen welcome={welcome} setWelcome={setWelcome}/>
+            <p>{coordz}</p>
+          </>
         ) : (
           <>
             <Navbar error={error} setError={setError} loading={loading} setLoading={setLoading} data={data} setData={setData} location={location} setLocation={setLocation} typeSearch={typeSearch} setTypeSearch={setTypeSearch}/>
