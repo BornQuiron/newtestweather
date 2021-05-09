@@ -28,7 +28,7 @@ const Main = ({ error, setError, loading, setLoading, showMap, setShowMap, data,
         setData(null);
 
         if(typeSearch == 'geo' && coords !== ''){
-            fetch(`/api/${coords}`)
+            fetch(`https://givemetheweather.herokuapp.com/api/${coords}`)
             .then(res => res.json())
             .then(data => {
 
@@ -51,7 +51,7 @@ const Main = ({ error, setError, loading, setLoading, showMap, setShowMap, data,
                 setError(500);
             });
         } else if(typeSearch == 'manual' && location !== ''){
-            fetch(`/api/search/${location}`)
+            fetch(`https://givemetheweather.herokuapp.com/api/search/${location}`)
             .then(res => res.json())
             .then(data => {
                 if(data.error){
@@ -72,7 +72,7 @@ const Main = ({ error, setError, loading, setLoading, showMap, setShowMap, data,
                 setError(500);
             });
         } else if(typeSearch == 'ip'){
-            fetch(`/api/geoip`)
+            fetch(`https://givemetheweather.herokuapp.com/api/geoip`)
             .then(res => res.json())
             .then(data => {
                 if(data.error){
@@ -105,7 +105,7 @@ const Main = ({ error, setError, loading, setLoading, showMap, setShowMap, data,
 
         const geolocationCall = async (coords) => {
 
-            await fetch(`/api/${coords}`)
+            await fetch(`https://givemetheweather.herokuapp.com/api/${coords}`)
             .then(res => res.json())
             .then(data => {
                 
@@ -282,7 +282,7 @@ const Main = ({ error, setError, loading, setLoading, showMap, setShowMap, data,
         setData(null);
 
         // Ip Location
-        fetch(`/api/geoip`)
+        fetch(`https://givemetheweather.herokuapp.com/api/geoip`)
         .then(res => res.json())
         .then(data => {
             if(data.error){

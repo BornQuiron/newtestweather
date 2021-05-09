@@ -15,7 +15,7 @@ const Navbar = ({ error, setError, loading, setLoading, location, setLocation, d
         const weatherLocation = encodeURIComponent(search);
 
         if(search !== ''){
-            fetch(`/api/search/${weatherLocation}`)
+            fetch(`https://givemetheweather.herokuapp.com/api/search/${weatherLocation}`)
             .then(res => res.json())
             .then(data => {
 
