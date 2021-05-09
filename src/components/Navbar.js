@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react"
+import { useState } from "react"
 
 
 const Navbar = ({ error, setError, loading, setLoading, location, setLocation, data, setData, typeSearch, setTypeSearch}) => {
@@ -23,11 +23,11 @@ const Navbar = ({ error, setError, loading, setLoading, location, setLocation, d
                     setData(null);
                     setLoading(false);
                     setError(data.error)
-                    console.log(data.error)
+                    /* console.log(data.error) */
                 } else {
                     setLoading(false);
                     setError(null);
-                    console.log(data)
+                    /* console.log(data) */
                     setData(data);
                     setTypeSearch('manual');
                     setLocation(weatherLocation);
@@ -51,9 +51,11 @@ const Navbar = ({ error, setError, loading, setLoading, location, setLocation, d
         <header>
             <section className="top-bar">
 
-                <div className="logo-wrapper">
-                    <img src="../images/logo.png" alt=""/>
-                </div>
+                <a href="/">
+                    <div className="logo-wrapper">
+                        <img src="../images/logo.png" alt=""/>
+                    </div>
+                </a>
 
                 
 

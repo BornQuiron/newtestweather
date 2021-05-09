@@ -27,7 +27,7 @@ const Main = ({ error, setError, loading, setLoading, showMap, setShowMap, data,
         setError(null);
         setData(null);
 
-        if(typeSearch == 'geo' && coords !== ''){
+        if(typeSearch === 'geo' && coords !== ''){
             fetch(`https://givemetheweather.herokuapp.com/api/${coords}`)
             .then(res => res.json())
             .then(data => {
@@ -36,11 +36,11 @@ const Main = ({ error, setError, loading, setLoading, showMap, setShowMap, data,
                     setData(null);
                     setLoading(false);
                     setError(data.error)
-                    console.log(data.error)
+                    /* console.log(data.error) */
                 } else {
                     setLoading(false);
                     setError(null);
-                    console.log(data)
+                    /* console.log(data) */
                     setData(data);
                 }
 
@@ -50,7 +50,7 @@ const Main = ({ error, setError, loading, setLoading, showMap, setShowMap, data,
                 setData(null);
                 setError(500);
             });
-        } else if(typeSearch == 'manual' && location !== ''){
+        } else if(typeSearch === 'manual' && location !== ''){
             fetch(`https://givemetheweather.herokuapp.com/api/search/${location}`)
             .then(res => res.json())
             .then(data => {
@@ -58,11 +58,11 @@ const Main = ({ error, setError, loading, setLoading, showMap, setShowMap, data,
                     setData(null);
                     setLoading(false);
                     setError(data.error)
-                    console.log(data.error)
+                    /* console.log(data.error) */
                 } else {
                     setLoading(false);
                     setError(null);
-                    console.log(data)
+                    /* console.log(data) */
                     setData(data);
                 }
             })
@@ -71,7 +71,7 @@ const Main = ({ error, setError, loading, setLoading, showMap, setShowMap, data,
                 setData(null);
                 setError(500);
             });
-        } else if(typeSearch == 'ip'){
+        } else if(typeSearch === 'ip'){
             fetch(`https://givemetheweather.herokuapp.com/api/geoip`)
             .then(res => res.json())
             .then(data => {
@@ -79,11 +79,11 @@ const Main = ({ error, setError, loading, setLoading, showMap, setShowMap, data,
                     setData(null);
                     setLoading(false);
                     setError(data.error)
-                    console.log(data.error)
+                    /* console.log(data.error) */
                 } else {
                     setLoading(false);
                     setError(null);
-                    console.log(data)
+                    /* console.log(data) */
                     setData(data);
                 }
             })
@@ -114,11 +114,11 @@ const Main = ({ error, setError, loading, setLoading, showMap, setShowMap, data,
                     setData(null);
                     setLoading(false);
                     setError(data.error);
-                    console.log(data.error)
+                    /* console.log(data.error) */
                 } else {
                     setLoading(false);
                     setError(null);
-                    console.log(data)
+                    /* console.log(data) */
                     setData(data);
                     setTypeSearch('geo');
                     setCoords(coords);
@@ -158,6 +158,9 @@ const Main = ({ error, setError, loading, setLoading, showMap, setShowMap, data,
                 case error.UNKNOWN_ERROR:
                   setError("An unknown error occurred.")
                   break;
+                default: {
+                    
+                }
             }
         }
 
@@ -289,11 +292,11 @@ const Main = ({ error, setError, loading, setLoading, showMap, setShowMap, data,
                 setData(null);
                 setLoading(false);
                 setError(data.error);
-                console.log(data.error)
+                /* console.log(data.error) */
             } else {
                 setLoading(false);
                 setError(null);
-                console.log(data)
+                /* console.log(data) */
                 setData(data);
                 setTypeSearch('ip');
             }
@@ -631,8 +634,17 @@ const Main = ({ error, setError, loading, setLoading, showMap, setShowMap, data,
             ) : (
                 <>
 
-                    {loading && ( <Loading/> )}
-                    {error && ( <Error error={error}/> )}
+                    <section className="weather-content-container">
+                    
+                        <div className="units-wrapper">
+
+                        {loading && ( <Loading/> )}
+                        {error && ( <Error error={error}/> )}
+
+                        </div>
+
+                    </section>
+                    
                 </>
             )}
 

@@ -2,8 +2,9 @@
 
 const Loading = () => {
     return (
-        <div>
-            <h1>Loading...</h1>
+        <div className="loading-container">
+            <i className="gg-loadbar-doc"></i>
+            <p>Loading...</p>
         </div>
     )
 }
